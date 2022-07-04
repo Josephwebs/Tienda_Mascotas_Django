@@ -1,40 +1,27 @@
 {% load static %}
 
 <body>
-<div class="text-center">
-<h1>PRODUCTOS PARA PERROS</h1>
-</div>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-4 col-md-6 col-sm-12 text-center bg-primario">
+  <div>{% include 'core\components\common\navbar.html' %}</div>
 
-      <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/Bolsas biodegradables.jpg" data-holder-rendered="true">
-      <h3>BOLSAS PARA PERROS</h3>
-      <p>Bolsas de basura compostables para perros.</p>
-    </div>
-
-    <div class="col-lg-4 col-md-6 col-sm-12 text-center bg-primario">
-
-      <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/Identificadores.jpg" data-holder-rendered="true">
-      <h3>IDENTIFICADORES PARA MASCOTAS</h3>
-      <p>Chapitas identificadoras para ellos</p>
-    </div>
-
-    <div class="col-lg-4 col-md-6 col-sm-12 text-center bg-primario">
-      <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/Correas.jpg" data-holder-rendered="true">
-      <h3>CORREAS ELASTICAS DOG</h3>
-      <p>Correa elastica para perros de todas las razas.</p>
-    </div>
+  <div class="text-center">
+    <h1>TIENDA</h1>
   </div>
-</div>
-
-</body>
-<footer class="text-center bg-secundario text-light">
-  <div class="container pt-3">
-    <div class="row">
-      <div class="col-12">
-        <p>Copyright &copy; WOOF & MIAU. Todos los derechos reservados.</p>
+  <div class="container">
+    {% for p in productos %}
+    <div class="row justify-content-center">
+      <div class="col-3 text-center bg-primario">
+        <img
+          class="rounded-circle"
+          alt="140x140"
+          style="width: 140px; height: 140px"
+          src="{{p.imagen}}"
+          data-holder-rendered="true"
+        />
+        <h3>{{p.nombre}}</h3>
+        <p>{{p.descripcion}}</p>
+        <h4>${{p.precio}}</h4>
       </div>
     </div>
+    {% endfor %}
   </div>
-</footer>
+</body>

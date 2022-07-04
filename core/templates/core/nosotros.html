@@ -1,32 +1,29 @@
 {% load static %}
   <body>
+    <div>{% include 'core\components\common\navbar.html' %}</div>
 <div class="row">
   <div class="col-lg-12 mb-4 mt-2 text-center">
     <h2>NOSOTROS</h2>
   </div>
 </div>
 </div>
-  <div class="text-center">
-    <img src="{% static 'images/nosotros.png' %}" class="rounded-personalizado" alt="">
+  <div class="container ">
+    <img src="{% static 'images/nosotros.png' %}" class="rounded-personalizado w-100" alt="">
   </div>
 
-<div class="container w-50">
-  <div class="text-center bg-primario">
+<div class="container w-100">
+  <div class="text-center bg-primario m-4">
     <h3 style="color: aliceblue;">Patricio Alarcon</h3>
-    <p class="">Encargado del diseño de la pagina junto con las imagenes y diferentes estilos entregados aplicando bootstrap en toda la pagina.</p>
+    <p class="">Encargado del diseño de la pagina junto con las imagenes y diferentes estilos entregados desde figma para darle color y versatilidad a la pagina.</p>
   </div>
-  <div class="text-center bg-primario">
+  <div class="text-center bg-primario m-4">
     <h3 style="color: aliceblue;" >José Alcántara</h3>
     <p class="">Encargado del front-end de la pagina llevando el diseño a codigo HTML5 y CSS3 y JS.</p>
   </div>
+  <div class="text-center bg-primario m-4">
+    <h3 style="color: aliceblue;" >Andrea</h3>
+    <p class="">Encargada del Back-end creando nuestra API para ser utilizada por el front-end. Manejo de base de datos.</p>
+  </div>
 </div>
 </body>
-<footer class="text-center bg-secundario text-light">
-  <div class="container pt-3">
-    <div class="row">
-      <div class="col-12">
-        <p>Copyright &copy; WOOF & MIAU. Todos los derechos reservados.</p>
-      </div>
-    </div>
-  </div>
-</footer>
+<div>{% include 'core\components\common\footer.html' %}</div>

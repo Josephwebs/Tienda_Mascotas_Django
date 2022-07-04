@@ -1,32 +1,30 @@
 {% load static %}
 <body>
-  <div class="container">
-          <h2 class="text-center m-4">MASCOTAS EN ADOPCIÓN</h2>
+  <div>{% include 'core\components\common\navbar.html' %}</div>
 
-      <div class="row d-flex justify-content-evenly mb-4">
-              {% for m in mascotas %}
-              <div class="row col-2 text-center bg-primario">
-                <h1>{{ m.nombreMascota }}</h1>
-                <p>{{ m.edadAnioMascota }} Años y {{ m.edadMesesMascota }} Meses</p>
-                <p>{{ m.sexoMascota }}</p>
-                {% if m.estEstirizadoMascota == True %}
-                  <p>Esterilizado</p>
-                {% else %}
-                  <p>No esterilizado</p>
-                {% endif %}  
-                <p> Raza: {{ m.razaMascota }}</p>
-                <p><img src="{{ m.fotoMascota }}"  class="w-100 rounded-personalizado"  ></p>
-              </div>
-              {% endfor %}
+  <div class="container">
+    <h2 class="text-center m-4">MASCOTAS EN ADOPCIÓN</h2>
+
+    <div class="row d-flex justify-content-evenly mb-4">
+      {% for m in mascotas %}
+      <div class="row col-2 text-center bg-primario">
+        <h1>{{ m.nombreMascota }}</h1>
+        <p>{{ m.edadAnioMascota }} Años y {{ m.edadMesesMascota }} Meses</p>
+        {% if m.sexoMascota == 2 %}
+        <p>Macho</p>
+        {% else %}
+        <p>Hembra</p>
+        {% endif %} {% if m.estEstirizadoMascota == True %}
+        <p>Esterilizado</p>
+        {% else %}
+        <p>No esterilizado</p>
+        {% endif %}
+        <p>
+          <img src="{{ m.fotoMascota }}" class="w-100 rounded-personalizado" />
+        </p>
       </div>
-  </div>
-</body>
-<footer class="text-center bg-secundario text-light">
-  <div class="container pt-3">
-    <div class="row">
-      <div class="col-12">
-        <p>Copyright &copy; WOOF & MIAU. Todos los derechos reservados.</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
-</footer>
+</body>
+<div>{% include 'core\components\common\footer.html' %}</div>

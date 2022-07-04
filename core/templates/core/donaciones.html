@@ -1,102 +1,106 @@
-{% load static %}
 <body>
-<section>
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-12 mb-4 mt-2 text-center">
-          <h2>FUNDACIONES</h2>
-          </div>
-      </div>
-  </div>
-  <div class="container">
-      <div class="row">
-          <div class="mt-4 fundacion1 rounded-personalizado">
-              <a class="btn btn-primary m-4" data-bs-toggle="modal" href="#TallerPeludo" role="button">Taller del Peludo</a>
-            </div>
-          <div class="mt-4 fundacion2 rounded-personalizado">
-            <a class="btn btn-primary m-4 " data-bs-toggle="modal" href="#bebrave" role="button">BE BRAVE fundación</a>
-          </div>
-          <div class="mt-4 fundacion3 rounded-personalizado">
-            <a class="btn btn-primary m-4" data-bs-toggle="modal" href="#ayuda" role="button">Adopta un Peludo</a>
-          </div>
-      </div>
-        <div class="row">
-            <div class="col-sm-12 mt-4 mb-2 text-center">
-              <small class="blockquote-footer">Patricio Alarcon<cite title="Source Title"> El bromas</cite></small> 
-            </div>
-        </div>
-      <div class="jumbotron">
-        <div class="container">
-            <div class="row">
-              <div class="text-center col-md-8 col-12 mx-auto">
-                  <p class="lead">"El mundo sería un lugar mucho mejor si las personas tuvieran el corazón de los perros"</p>
-              </div>
-            </div>
-        </div>
-      </div>
-  </div>
-</section>
+  <div>{% include 'core\components\common\navbar.html' %}</div>
 
-<!-- pop up de cada fundacion-->
-<div class="modal fade" id="TallerPeludo" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TallerPeludo">Taller del Peludo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body justify-content-center">
-        <img class="rounded-personalizado" src="{% static 'images/fundaciones/subseccion/1.png' %}" alt="" width="100%" height="100%">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit odit inventore dolor suscipit omnis culpa impedit, amet exercitationem excepturi sequi quos perspiciatis, quisquam, nam hic est pariatur fuga praesentium. Dolor!
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Seguir Navegando</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="bebrave" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="bebrave">BE BRAVE FUNDACION</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body justify-content-center">
-        <img class="rounded-personalizado" src="{% static 'images/fundaciones/subseccion/2.png' %}" alt="" width="100%" height="100%">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit odit inventore dolor suscipit omnis culpa impedit, amet exercitationem excepturi sequi quos perspiciatis, quisquam, nam hic est pariatur fuga praesentium. Dolor!
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Seguir Navegando</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="ayuda" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ayuda">Adopta un Peludo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body justify-content-center">
-        <img class="rounded-personalizado" src="{% static 'images/fundaciones/subseccion/3.png' %}" alt="" width="100%" height="100%">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit odit inventore dolor suscipit omnis culpa impedit, amet exercitationem excepturi sequi quos perspiciatis, quisquam, nam hic est pariatur fuga praesentium. Dolor!
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Seguir Navegando</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- pop up de cada fundacion fin -->
-</body>
-<footer class="text-center bg-secundario text-light">
-  <div class="container pt-3">
+  <div class="container">
     <div class="row">
-      <div class="col-12">
-        <p>Copyright &copy; WOOF & MIAU. Todos los derechos reservados.</p>
+      <div class="col-lg-12 mb-4 mt-2 text-center">
+        <h2>FUNDACIONES</h2>
       </div>
     </div>
   </div>
-</footer
+  {% for f in fundaciones %}
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="mt-4 fundacion{{f.idFundacion}} rounded-personalizado">
+          <a
+            class="btn btn-primary m-4 p-3"
+            data-bs-toggle="modal"
+            href="#fundacion{{f.idFundacion}}"
+            role="button"
+            >{{f.nombreFundacion}}</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- pop up de fundacion-->
+    <div
+      class="modal fade"
+      id="fundacion{{f.idFundacion}}"
+      aria-hidden="true"
+      aria-labelledby="exampleModalToggleLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="fundacion{{f.idFundacion}}">
+              {{f.nombreFundacion}}
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body justify-content-center">
+            <img
+              class="rounded-personalizado"
+              src="{{f.fotoFundacion}}"
+              alt=""
+              width="100%"
+              height="100%"
+            />
+            {{f.descFundacion}}
+          </div>
+          <div class="modal-footer">
+            <a href="{{f.website}}">
+              <button
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                id="btn-donacion"
+                data-bs-toggle="modal"
+              >
+                Visitar pagina Web
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style type="text/css">
+    .fundacion{{f.idFundacion}} {
+      background-image: url({{f.fotoFundacion}});
+      height: 20rem;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  </style>
+
+  {% endfor %}
+  <!-- pop up de cada fundacion fin -->
+  <div class="row">
+    <div class="col-sm-12 mt-4 mb-2 text-center">
+      <small class="blockquote-footer"
+        >Patricio Alarcon<cite title="Source Title"> El bromas</cite></small
+      >
+    </div>
+  </div>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="text-center col-md-8 col-12 mx-auto">
+          <p class="lead">
+            "El mundo sería un lugar mucho mejor si las personas tuvieran el
+            corazón de los perros"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<div>{% include 'core\components\common\footer.html' %}</div>
